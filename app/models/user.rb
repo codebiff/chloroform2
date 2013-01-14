@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  before_create :generate_user
+  def generate_user
+    self.api_key = SecureRandom.hex    
+  end
+
 end
