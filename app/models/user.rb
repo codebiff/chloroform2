@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  before_create :generate_user
-  def generate_user
+  before_create :generate_defaults
+  def generate_defaults
     self.api_key = SecureRandom.hex    
   end
 
