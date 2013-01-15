@@ -78,4 +78,15 @@ describe Message do
     expect{ Message.generate(user, params) }.to change(ActionMailer::Base.deliveries, :count).by(1) # First call to user sends confirmation email for account - so 2.
   end
 
+  it "should not add the api_key to data" do
+    m = Message.generate(user, params.merge({form_label: "Form Label"}))
+    m.data.should_not have_key("form_label")
+  end
+
+  it "can have a label" do
+    m = Message.generate(user, params.merge({form_label: "Contact & Payment"}))
+    m.label["name"].should eq("Contact & Payment")
+    m.label["slug"].should eq("contact-and-payment")
+  end
+
 end

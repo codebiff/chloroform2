@@ -52,7 +52,8 @@ CREATE TABLE messages (
     data hstore,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    confirm_url character varying(255)
+    confirm_url character varying(255),
+    label hstore
 );
 
 
@@ -203,3 +204,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130115112713');
 INSERT INTO schema_migrations (version) VALUES ('20130115131211');
 
 INSERT INTO schema_migrations (version) VALUES ('20130115131900');
+
+INSERT INTO schema_migrations (version) VALUES ('20130115221907');
