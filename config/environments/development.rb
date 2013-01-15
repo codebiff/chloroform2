@@ -1,4 +1,7 @@
 Chloroform::Application.configure do
+
+  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
+  
   # Settings specified here will take precedence over those in config/application.rb
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener
