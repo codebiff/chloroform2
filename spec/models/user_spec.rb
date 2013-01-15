@@ -4,13 +4,9 @@ describe User do
   
   let(:user) { FactoryGirl.create(:user) }
 
-  context "api_key" do
-    it "should be present" do
-      expect(user).to respond_to(:api_key)
-      user.api_key.should_not be_nil
-    end
-  end
-
   it { should respond_to(:settings) }
+  it { user.settings.should be_kind_of(Hash) }
+
+  it { user.api_key.should match(/^\w{32}$/) }
 
 end
