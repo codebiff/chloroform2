@@ -65,4 +65,8 @@ describe Message do
     m.confirm_url.should eq("http://example.com")
   end
 
+  it "should not create a message if no data is present" do
+    expect{ Message.generate(user, {}) }.to_not change(Message, :count)
+  end
+
 end

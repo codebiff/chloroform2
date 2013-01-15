@@ -5,12 +5,13 @@ class Message < ActiveRecord::Base
 
   attr_accessible :data
 
-  REJECTED_PARAMS = ["api_key", "controller", "action", "confirm_url", "^_"]
+  REJECTED_PARAMS = ["^api_key$", "^controller$", "^action$", "^confirm_url$", "^_"]
 
   def self.generate user, params, referer=nil
     m = user.messages.build
     m.confirm_url = parse_confirm(user, params, referer)
     m.data = clean(params)
+    return false if m.data.empty?
     m.save
     return m
   end

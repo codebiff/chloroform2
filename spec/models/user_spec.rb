@@ -11,4 +11,6 @@ describe User do
     end
   end
 
+  it { should respond_to(:settings) }
+
 end
