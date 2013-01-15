@@ -27,6 +27,24 @@ describe ApiController do
     expect{ post :submit, params.merge({api_key: "foobar"}) }.to change(user.messages, :count).by(0)
   end
 
-  it "should redirect to the correct referer"
+  it "should redirect to the correct param" do
+    post :submit, params.merge({api_key: user.api_key, confirm_url: "http://params-test.com"})
+    response.should redirect_to "http://params-test.com"
+  end
+
+  it "should redirect to the correct referer" do
+    post :submit, params.merge({api_key: user.api_key})
+    response.should redirect_to "http://test.com"
+  end
+
+  it "should redirect to referer if incorrect api_key" do
+    post :submit, params.merge({api_key: "foobar"})
+    response.should redirect_to "http://test.com"
+  end
+
+  it "should redirect to referer if no params" do
+    post :submit, {api_key: user.api_key}
+    response.should redirect_to "http://test.com"
+  end
 
 end
