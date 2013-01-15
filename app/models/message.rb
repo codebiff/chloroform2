@@ -13,6 +13,7 @@ class Message < ActiveRecord::Base
     m.data = clean(params)
     return false if m.data.empty?
     m.save
+    MessageMailer.new_message(user, m).deliver if user.confirmed?
     return m
   end
 

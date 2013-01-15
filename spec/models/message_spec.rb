@@ -69,4 +69,13 @@ describe Message do
     expect{ Message.generate(user, {}) }.to_not change(Message, :count)
   end
 
+  it "should not send an email if the user is not confirmed" do
+    expect{ Message.generate(user, params) }.to change(ActionMailer::Base.deliveries, :count).by(1) # Call to user creates email
+  end
+
+  it "should send an email if the user is confirmed" do
+    user.confirm!
+    expect{ Message.generate(user, params) }.to change(ActionMailer::Base.deliveries, :count).by(1) # First call to user sends confirmation email for account - so 2.
+  end
+
 end
