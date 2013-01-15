@@ -48,10 +48,11 @@ SET default_with_oids = false;
 
 CREATE TABLE messages (
     id integer NOT NULL,
-    user_id_id integer,
+    user_id integer,
     data hstore,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    confirm_url character varying(255)
 );
 
 
@@ -105,7 +106,8 @@ CREATE TABLE users (
     unconfirmed_email character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    api_key character varying(255)
+    api_key character varying(255),
+    settings hstore
 );
 
 
@@ -159,10 +161,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_messages_on_user_id_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_messages_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_messages_on_user_id_id ON messages USING btree (user_id_id);
+CREATE INDEX index_messages_on_user_id ON messages USING btree (user_id);
 
 
 --
@@ -197,3 +199,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130114220915');
 INSERT INTO schema_migrations (version) VALUES ('20130115105330');
 
 INSERT INTO schema_migrations (version) VALUES ('20130115112713');
+
+INSERT INTO schema_migrations (version) VALUES ('20130115131211');
+
+INSERT INTO schema_migrations (version) VALUES ('20130115131900');

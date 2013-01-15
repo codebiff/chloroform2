@@ -4,7 +4,7 @@ describe User do
   
   let(:user) { FactoryGirl.create(:user) }
 
-  context "api_Key" do
+  context "api_key" do
     it "should be present" do
       expect(user).to respond_to(:api_key)
       user.api_key.should_not be_nil
