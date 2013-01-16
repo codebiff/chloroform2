@@ -11,7 +11,7 @@ class Message < ActiveRecord::Base
   def self.generate user, params, referer=nil
     m = user.messages.build
     m.confirm_url = parse_confirm(user, params, referer)
-    m.label = {name: params[:form_label].strip, slug: sluggerize(params[:form_label].strip)}
+    m.label = {name: params[:form_label].strip, slug: sluggerize(params[:form_label].strip)} if params[:form_label]
     m.data = clean(params)
     return false if m.data.empty?
     m.save
