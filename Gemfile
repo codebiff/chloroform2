@@ -18,6 +18,7 @@ group :test, :development do
   gem "database_cleaner"
   gem "capybara"
   gem "rb-inotify"
+  gem "spork-rails"
 end
 
 group :development do

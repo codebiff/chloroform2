@@ -8,8 +8,9 @@ describe HomeController do
   describe "GET 'index'" do
 
     it "should not redirect if not logged in" do
+      sign_out(user)
       get :index
-      response.sould_not be_redirect
+      response.should_not be_redirect
     end
 
     it "should redirect to dashboard if logged in" do
