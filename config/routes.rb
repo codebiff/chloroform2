@@ -4,7 +4,7 @@ Chloroform::Application.routes.draw do
 
   devise_for :users
 
-  get "dashboard/index"
+  match "dashboard" => "dashboard#index", as: "dashboard"
   post "api/submit"
 
   # The priority is based upon order of creation:

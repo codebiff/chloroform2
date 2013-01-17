@@ -11,3 +11,24 @@
  *= require_self
  *= require_tree .
  */
+
+@import reset
+
+$bgColour: #eee
+$textColour: #666
+$linkColour: #000
+
+body
+  background: $bgColour
+  color: $textColour
+
+a
+  color: $linkColour
+  text-decoration: none
+  &:hover
+    color: lighten($linkColour, 20%)
+
+#container
+  width: 760px
+  margin: 0 auto
+  font-family: arial, sans-serif  
