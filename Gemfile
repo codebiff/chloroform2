@@ -19,6 +19,7 @@ group :test, :development do
   gem "capybara"
   gem "rb-inotify"
   gem "spork-rails"
+  gem "faker"
 end
 
 group :development do
