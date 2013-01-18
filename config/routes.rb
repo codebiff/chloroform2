@@ -5,6 +5,11 @@ Chloroform::Application.routes.draw do
   devise_for :users
 
   match "dashboard" => "dashboard#index", as: "dashboard"
+  
+  match "messages" => "messages#index"
+  match "messages/label/:slug" => "messages#label"
+
+
   post "api/submit"
 
   # The priority is based upon order of creation:

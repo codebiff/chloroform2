@@ -8,6 +8,8 @@ class Message < ActiveRecord::Base
 
   REJECTED_PARAMS = ["^api_key$", "^controller$", "^action$", "^confirm_url$", "^form_label$", "^_"]
 
+  scope :labeled, lambda {|slug| where("label -> 'slug' = '#{slug}'")}
+
   def self.generate user, params, referer=nil
     m = user.messages.build
     m.confirm_url = parse_confirm(user, params, referer)

@@ -89,4 +89,9 @@ describe Message do
     m.label["slug"].should eq("contact-and-payment")
   end
 
+  it "should find a messaged by label with a scope" do
+    5.times { Message.generate(user, params.merge({form_label: "Contact & Payment"})) }
+    Message.labeled("contact-and-payment").count.should eq(5)
+  end
+
 end
