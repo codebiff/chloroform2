@@ -7,6 +7,10 @@ class MessagesController < ApplicationController
 
   def label
     @messages = current_user.messages.labeled(params[:slug])
+    if ! @messages.empty?
+    else
+      redirect_to dashboard_path, alert: "No label with that name"
+    end
   end
 
 end

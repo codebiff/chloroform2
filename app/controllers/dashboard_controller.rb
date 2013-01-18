@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
 
   def index
     @messages = current_user.messages
-    @labels = @messages.map{|m| {m.label["name"] => m.label["slug"]} }.uniq
+    @labels = Message.get_labels(@messages)
   end
 
 end

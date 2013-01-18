@@ -1,0 +1,8 @@
+<div>
+  <p><%= message.created_at %> | <span><%= link_to message.label["name"], label_path(message.label["slug"]) %></span></p>
+  <ul>
+    <% message.data.each do |k,v| %>
+    <li><strong><%= k %>:</strong> <%= v %></li>
+    <% end %>
+  </ul>
+</div>

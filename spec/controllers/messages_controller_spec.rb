@@ -32,6 +32,14 @@ context "label" do
     assigns(:messages).should_not be_empty
   end
 
+  it "should redirect if label doesn't exist" do
+    user.confirm!
+    sign_in user
+    get :label, {slug: 'i-am-made-up'}
+    assigns(:messages).should be_empty
+    response.should redirect_to(dashboard_path)
+  end
+
 end
 
 end

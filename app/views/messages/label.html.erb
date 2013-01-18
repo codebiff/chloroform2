@@ -1,2 +1,5 @@
 <h1>Messages#label</h1>
-<p>Find me in app/views/messages/label.html.erb</p>
+
+<% @messages.each do |message| %>
+  <%= render :partial => 'shared/message', :locals => {:message => message} %>
+<% end %>

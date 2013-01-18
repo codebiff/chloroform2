@@ -1,2 +1,11 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1>dashboard</h1>
+
+<ul>
+<% @labels.each do |label| %>
+  <li><%= link_to label["name"], label_path(label["slug"]) %></li>
+<% end %>
+</ul>
+
+<% @messages.each do |message| %>
+  <%= render :partial => 'shared/message', :locals => {:message => message} %>
+<% end %>

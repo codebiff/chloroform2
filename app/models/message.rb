@@ -35,4 +35,8 @@ class Message < ActiveRecord::Base
     text.downcase.gsub('&','and').gsub(/[^0-9a-z]+/, ' ').strip.gsub(' ', '-')
   end
 
+  def self.get_labels(messages) 
+    messages.map{|m| m.label }.uniq.sort{|x,y| x["name"] <=> y["name"]}
+  end
+
 end

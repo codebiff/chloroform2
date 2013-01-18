@@ -7,8 +7,7 @@ Chloroform::Application.routes.draw do
   match "dashboard" => "dashboard#index", as: "dashboard"
   
   match "messages" => "messages#index"
-  match "messages/label/:slug" => "messages#label"
-
+  match "messages/label/:slug" => "messages#label", as: "label"
 
   post "api/submit"
 
